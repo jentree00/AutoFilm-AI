@@ -28,12 +28,27 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Prepare Web Assets
+        run: |
+          mkdir -p www
+          cp *.html www/ 2>/dev/null || true
+
       - name: Add & Sync Android Platform
         run: |
           npx cap add android
           npx cap sync android
 
       - name: Build Debug APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: AutoFilm-AI-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
         run: |
           cd android
           chmod +x gradlew
