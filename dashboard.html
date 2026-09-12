@@ -10,7 +10,7 @@
   <!-- Mobile Screen Container -->
   <div class="w-full max-w-[360px] h-[640px] relative overflow-hidden rounded-[24px] shadow-2xl flex flex-col justify-between p-4 bg-[#0B101D] text-white border border-slate-800">
     
-    <!-- Main Dashboard View -->
+    <!-- VIEW 1: MAIN DASHBOARD -->
     <div id="mainDashboard" class="flex-1 overflow-y-auto no-scrollbar space-y-4 pr-0.5">
       
       <!-- Header Section -->
@@ -106,19 +106,11 @@
             </div>
             <span class="text-blue-400 text-xs">➔</span>
           </button>
-          
-          <button onclick="runGenre('SciFi')" class="w-full py-2.5 px-3 rounded-xl bg-slate-900 border border-slate-700 hover:border-blue-500 text-left flex justify-between items-center opacity-70">
-            <div>
-              <p class="text-xs font-bold text-white">🤖 Sci-Fi / Cyberpunk</p>
-              <p class="text-[10px] text-slate-400">Futuristic, AI, Space</p>
-            </div>
-            <span class="text-blue-400 text-xs">➔</span>
-          </button>
         </div>
       </div>
     </div>
 
-    <!-- VIEW 2: AUTOMATIC STORY CONCEPTS DISPLAY -->
+    <!-- VIEW 2: PHASE 1 STORY CONCEPTS -->
     <div id="storyConceptsView" class="hidden absolute inset-0 bg-[#0B101D] z-50 flex flex-col p-4 overflow-y-auto no-scrollbar">
       <div class="flex justify-between items-center mb-3">
         <button onclick="backToDashboard()" class="text-xs text-blue-400 font-semibold">← Back</button>
@@ -131,9 +123,21 @@
         </p>
       </div>
 
-      <!-- Story Concepts List -->
       <div id="conceptsContainer" class="space-y-3 pb-6">
-        <!-- Dynamic content will load here -->
+        <!-- Dynamic Concepts Load Here -->
+      </div>
+    </div>
+
+    <!-- VIEW 3: PHASE 2 MASTER STORY BIBLE & CHARACTER REFS -->
+    <div id="phase2View" class="hidden absolute inset-0 bg-[#0B101D] z-50 flex flex-col p-4 overflow-y-auto no-scrollbar">
+      <div class="flex justify-between items-center mb-3">
+        <button onclick="backToConcepts()" class="text-xs text-blue-400 font-semibold">← Concepts</button>
+        <span class="text-[10px] bg-purple-900/50 text-purple-300 border border-purple-700/50 px-2 py-0.5 rounded-full font-mono">PHASE 2</span>
+      </div>
+
+      <!-- Phase 2 Dynamic Content Area -->
+      <div id="phase2Content" class="space-y-4 pb-6 text-slate-200 text-[11px]">
+        <!-- Dynamic Story Bible Rendered Here -->
       </div>
     </div>
 
@@ -141,16 +145,78 @@
 
   <script>
     const horrorConcepts = [
-      { id: 1, title: "Ang Huling Habilin", tag: "Psychological Horror", desc: "Nakatanggap si Mark ng video message mula sa namatay niyang girlfriend: 'Huwag mong bubuksan ang pinto kapag kumatok ako ngayong gabi.'" },
-      { id: 2, title: "Sumpa ng Balete Drive", tag: "Urban Legend Chase", desc: "Isinakay ni Leo si Maya sa kanyang kotse. Hindi ito nagpapakita sa mirror, at sinimulan silang habulin ng mga armadong kulto." },
-      { id: 3, title: "Kamera ng Kamatayan", tag: "Found Footage Thriller", desc: "Bawat kuhanang larawan ng lumang camera ay nagpapakita kung paano mamamatay ang tao sa loob ng 24 oras—at ang huling kuha ay sina Jay at Bea." },
-      { id: 4, title: "Mata ng San Vicente", tag: "Folk Horror", desc: "Umuwi si Paolo sa probinsya ng kasintahan. Natuklasan niyang ang buong barangay ay pinamumunuan ng mga aswang." },
-      { id: 5, title: "Gabi ng Manggagaway", tag: "Revenge Possesssion", desc: "Nagsimulang mag-iba ang kilos ni Kat matapos makakita ng kulam doll. May lumang espiritu na gustong ipaghanti ang isang lumang krimen." }
-    ];
-
-    const scifiConcepts = [
-      { id: 1, title: "Neon Manila 2099", tag: "Cyberpunk Action", desc: "Isang rogue cyborg ang naghahanap ng huling totoong alaala ng tao sa ilalim ng underground market." },
-      { id: 2, title: "Project Horizon", tag: "Space Survival", desc: "Nawalan ng contact ang space station sa Earth matapos makatanggap ng misteryosong signal mula sa Mars." }
+      { 
+        id: 1, 
+        title: "Ang Huling Habilin", 
+        tag: "Psychological Horror", 
+        desc: "Nakatanggap si Mark ng video message mula sa namatay niyang girlfriend: 'Huwag mong bubuksan ang pinto kapag kumatok ako ngayong gabi.'",
+        logline: "Pagkatapos mamatay ng kanyang kasintahan, nakatanggap si Mark ng live video mula rito na nagbabala na huwag bubuksan ang pinto—ngunit may kumakatok na sa labas.",
+        premise: "Sinusubukan ni Mark na alalamin kung ang bumalik na si Clara ay ang kanyang tunay na mahal o isang mapanlinlang na entidad mula sa madilim na nakaraan ng pamilya nito.",
+        mystery: "Bakit ginagamit ng sinaunang nilalang ang anyo ni Clara para makuha ang kaluluwa ni Mark?",
+        roadmap: [
+          { ep: 1, title: "The Live Stream", conflict: "Natanggap ang video", horror: "Boses sa dilim", romance: "Mga alaala ni Clara", rev: "Namatay na si Clara 3 days ago", cliff: "May kumakatok sa pinto" },
+          { ep: 2, title: "The Shadow", conflict: "Pagtatago sa bahay", horror: "Distorted face sa bintana", romance: "Nostalgic flashback", rev: "May nawawalang diary", cliff: "Nasa loob na ang entidad" },
+          { ep: 3, title: "The Impostor", conflict: "Paghaharap sa sala", horror: "Unnatural joint movement", romance: "Pag-doubt sa pag-ibig", rev: "Isinakripisyo si Clara ng pamilya", cliff: "Hinawakan ni Clara ang leeg ni Mark" },
+          { ep: 4, title: "The Ritual", conflict: "Pagtakas papuntang basement", horror: "Whispering walls", romance: "Desperadong pagprotekta", rev: "Maiiwasan ang sumpa gamit ang dugo", cliff: "Lumabas ang tunay na halimaw" },
+          { ep: 5, title: "The Final Choice", conflict: "Huling labanan sa altar", horror: "Full supernatural form", romance: "True Love Sacrifice", rev: "Kaluluwa ni Clara ay gising pa", cliff: "Kumawala sa sumpa" }
+        ],
+        charName: "Mark_MasterRef_v1",
+        charPrompt: "25-year-old Filipino male, realistic skin texture, short neat black hair, worried dark brown eyes, wearing default black hoodie. Cinematic lighting, photorealistic, 9:16 vertical orientation, studio background."
+      },
+      { 
+        id: 2, 
+        title: "Sumpa ng Balete Drive", 
+        tag: "Urban Legend Chase", 
+        desc: "Isinakay ni Leo si Maya sa kanyang kotse. Hindi ito nagpapakita sa mirror, at sinimulan silang habulin ng mga armadong kulto.",
+        logline: "Isang TNVS driver ang nakasakay ng mahiwagang abentura kung saan ang kanyang pasahero ay isang espiritu na hinahabol ng mga kulto.",
+        premise: "Kailangang maihatid ni Leo si Maya sa lumang kapilya bago sumikat ang araw habang iniiwasan ang mga nakamamatay na humahabol sa kanila.",
+        mystery: "Ano ang lihim sa dugo ni Maya na kailangan ng kulto para sa kanilang ritwal?",
+        roadmap: [
+          { ep: 1, title: "Midnight Passenger", conflict: "Pagsakay sa kalsada", horror: "Walang repleksyon sa salamin", romance: "Awkward eye contact", rev: "Espiritu pala si Maya", cliff: "Pinalibutan ng mga kulto" },
+          { ep: 2, title: "High-Speed Survival", conflict: "Habulan sa kalsada", horror: "Mga lumilipad na anino", romance: "Pagtitiwala sa isa't isa", rev: "Buhay pa ang katawan ni Maya", cliff: "Sumabog ang gulong" },
+          { ep: 3, title: "The Abandoned Gas Station", conflict: "Pagtatago sa dilim", horror: "Kultong may maskara", romance: "Pag-amin ng nararamdaman", rev: "Pinsan ni Leo ang lider ng kulto", cliff: "Nahuli si Maya" },
+          { ep: 4, title: "The Cult's Trap", conflict: "Pagpasok sa lair", horror: "Ritual sacrifice setup", romance: "Pagtatanggol sa mahal", rev: "Kailangan ang buhay ni Leo", cliff: "Nakahanda na ang kutsilyo" },
+          { ep: 5, title: "Dawn Break", conflict: "Labanan bago sumikat ang araw", horror: "Demon invocation", romance: "Huling yakap", rev: "Nakaligtas ang dalawa", cliff: "Nagising si Maya sa ospital" }
+        ],
+        charName: "Leo_MasterRef_v1",
+        charPrompt: "27-year-old Filipino male driver, athletic build, tanned skin, messy black hair, wearing denim jacket over grey shirt, intense expression, photorealistic human actor, 9:16 vertical."
+      },
+      { 
+        id: 3, 
+        title: "Kamera ng Kamatayan", 
+        tag: "Found Footage Thriller", 
+        desc: "Bawat kuhanang larawan ng lumang camera ay nagpapakita kung paano mamamatay ang tao sa loob ng 24 oras—at ang huling kuha ay sina Jay at Bea.",
+        logline: "Nakahuli ng sumpa sa vintage camera ang dalawang magkasintahan na nagpapakita ng eksaktong oras at paraan ng kamatayan ng sinumang kunan nito.",
+        premise: "Naghahabol sa oras sina Jay at Bea upang sirain ang sumpa ng lumang camera bago matapos ang nakatadhanang 24 oras ng kanilang buhay.",
+        mystery: "Sino ang dating may-ari na naglagay ng sumpa sa lens ng camera?",
+        roadmap: [
+          { ep: 1, title: "The Polaroid", conflict: "Pagkuha ng litrato", horror: "Nagbabagong larawan", romance: "Masayang petsa", rev: "Namatay ang kaibigan sa photo", cliff: "Kinuhaan nila ang sarili" },
+          { ep: 2, title: "The Darkroom", conflict: "Pag-develop ng film", horror: "Misteryosong anino sa likod", romance: "Paghahawak ng kamay sa takot", rev: " May 12 oras na lang sila", cliff: "Bumukas ang pinto mag-isa" },
+          { ep: 3, title: "The Dark History", conflict: "Pag-imbestiga sa Antique Shop", horror: "Galit na espiritu", romance: "Protecting each other", rev: "Kailangan magsakripisyo ng isa", cliff: "Nasunog ang shop" },
+          { ep: 4, title: "Broken Glass", conflict: "Pagtatangkang sirain ang camera", horror: "Kusang nabubuo ang camera", romance: "Paiyak na pag-amin", rev: "Hindi mababasag ang sumpa", cliff: "Nagsimula ang aksidente" },
+          { ep: 5, title: "The Last Frame", conflict: "Huling minuto ng 24 hours", horror: "Time running out phenomenon", romance: "True Love victory", rev: "Naligtas ang isa't isa", cliff: "May panibagong nagmamay-ari" }
+        ],
+        charName: "Jay_MasterRef_v1",
+        charPrompt: "26-year-old Filipino male photographer, wearing glasses, clean-cut hair, worried eyes, holding vintage camera, realistic skin texture, 9:16 portrait style, photorealistic."
+      },
+      { 
+        id: 4, 
+        title: "Mata ng San Vicente", 
+        tag: "Folk Horror", 
+        desc: "Umuwi si Paolo sa probinsya ng kasintahan. Natuklasan niyang ang buong barangay ay pinamumunuan ng mga aswang.",
+        logline: "Ang pamamanhikan ni Paolo sa baryo ng kanyang kasintahan ay naging isang madugong pakikipaglaban para sa kanyang buhay laban sa lipi ng mga aswang.",
+        premise: "Dapat makatakas si Paolo bago sumapit ang bilog na buwan kung kailan siya ihahain ng pamilya ni Mia.",
+        mystery: "Tunay bang mahal ni Mia si Paolo o ginamit lang siya nitong huli para sa ritwal?",
+        roadmap: [
+          { ep: 1, title: "Welcome to San Vicente", conflict: "Pakarating sa baryo", horror: "Kakaibang tingin ng mga tao", romance: "Sweet welcome", rev: "May kakaibang karne sa mesa", cliff: "Naka-lock ang lahat ng pinto" },
+          { ep: 2, title: "The Meat Locker", conflict: "Paghahanap ng labasan", horror: "Nakabitay na kalansay", romance: "Paghinala kay Mia", rev: "Aswang ang buong barangay", cliff: "Narinig ang ungal sa gabi" },
+          { ep: 3, title: "The Hunt Begins", conflict: "Pagtakas sa gubat", horror: "Animalistic transformations", romance: "Pag-aalinlangan sa pag-ibig", rev: "Gusto rin tumakas ni Mia", cliff: "Pinalibutan sila ng nilalang" },
+          { ep: 4, title: "Mia's Choice", conflict: "Confrontation sa kapitan", horror: "Red glowing eyes", romance: "Sacrifice for love", rev: "Pinrotektahan ni Mia si Paolo", cliff: "Pnaslang ang kapitan" },
+          { ep: 5, title: "Blood and Moonlight", conflict: "Huling pagtakas sa ilog", horror: "Full moon fury", romance: "Magkasamang nakatakas", rev: "Ligtas na sa kabihasnan", cliff: "May marka pala si Paolo" }
+        ],
+        charName: "Paolo_MasterRef_v1",
+        charPrompt: "28-year-old Filipino male, casual urban outfit, brown jacket, scared expression, realistic details, wet hair, 9:16 vertical format, cinematic."
+      }
     ];
 
     function openGenreModal() {
@@ -166,9 +232,7 @@
       const container = document.getElementById('conceptsContainer');
       container.innerHTML = '';
 
-      const list = genreType === 'Horror' ? horrorConcepts : scifiConcepts;
-
-      list.forEach(c => {
+      horrorConcepts.forEach(c => {
         container.innerHTML += `
           <div class="p-3 bg-[#131B2E] border border-slate-800 rounded-xl hover:border-blue-500/50 transition">
             <div class="flex justify-between items-start mb-1">
@@ -176,7 +240,7 @@
               <span class="text-[9px] bg-slate-800 text-blue-400 px-1.5 py-0.5 rounded">${c.tag}</span>
             </div>
             <p class="text-[10px] text-slate-300 leading-snug mb-2.5">${c.desc}</p>
-            <button onclick="selectStory(${c.id}, '${c.title}')" class="w-full py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-[10px] font-semibold transition">
+            <button onclick="selectConcept(${c.id})" class="w-full py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-[10px] font-semibold transition shadow-md shadow-blue-500/20 active:scale-[0.98]">
               Piliin ang Concept #${c.id}
             </button>
           </div>
@@ -186,13 +250,26 @@
       document.getElementById('storyConceptsView').classList.remove('hidden');
     }
 
-    function selectStory(id, title) {
-      alert(`Na-select mo ang Concept #${id}: "${title}"!\n\nSusunod na ipoproseso ang Phase 2: Master Story Bible at Character Reference System.`);
-    }
+    function selectConcept(id) {
+      const selected = horrorConcepts.find(c => c.id === id);
+      const container = document.getElementById('phase2Content');
 
-    function backToDashboard() {
-      document.getElementById('storyConceptsView').classList.add('hidden');
-    }
-  </script>
-</body>
-</html>
+      let roadmapRows = selected.roadmap.map(r => `
+        <tr class="border-b border-slate-800 text-[9px]">
+          <td class="p-1.5 font-bold text-blue-400">Ep ${r.ep}</td>
+          <td class="p-1.5 text-slate-200">${r.title}</td>
+          <td class="p-1.5 text-slate-400">${r.rev}</td>
+          <td class="p-1.5 text-red-400 font-medium">${r.cliff}</td>
+        </tr>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="bg-purple-950/30 border border-purple-800/40 rounded-xl p-3">
+          <h2 class="text-xs font-bold text-purple-300 mb-1">📖 MASTER STORY BIBLE: ${selected.title.toUpperCase()}</h2>
+          <p class="text-[10px] text-slate-300"><b>Logline:</b> ${selected.logline}</p>
+        </div>
+
+        <div class="bg-[#131B2E] border border-slate-800 rounded-xl p-3 space-y-2">
+          <h3 class="text-[11px] font-bold text-white">1. Core Story Details</h3>
+          <p class="text-slate-300"><b>Premise:</b> ${selected.premise}</p>
+          <p class="text-slate-300"><b>Cent
