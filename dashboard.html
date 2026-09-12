@@ -272,4 +272,53 @@
         <div class="bg-[#131B2E] border border-slate-800 rounded-xl p-3 space-y-2">
           <h3 class="text-[11px] font-bold text-white">1. Core Story Details</h3>
           <p class="text-slate-300"><b>Premise:</b> ${selected.premise}</p>
-          <p class="text-slate-300"><b>Cent
+          <p class="text-slate-300"><b>Central Mystery:</b> ${selected.mystery}</p>
+        </div>
+
+        <div class="bg-[#131B2E] border border-slate-800 rounded-xl p-3">
+          <h3 class="text-[11px] font-bold text-white mb-2">2. 5-Episode Master Roadmap</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-slate-700 text-[9px] text-slate-400">
+                  <th class="p-1">Ep</th>
+                  <th class="p-1">Title</th>
+                  <th class="p-1">Revelation</th>
+                  <th class="p-1">Cliffhanger</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${roadmapRows}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bg-[#131B2E] border border-slate-800 rounded-xl p-3 space-y-2">
+          <h3 class="text-[11px] font-bold text-white">3. Locked Master Character Reference Prompt</h3>
+          <div class="p-2 bg-slate-900 border border-slate-800 rounded-lg font-mono text-[9px] text-purple-300">
+            <p class="font-bold text-blue-400 mb-1">ID: ${selected.charName}</p>
+            <p class="text-slate-300">${selected.charPrompt}</p>
+          </div>
+        </div>
+
+        <button onclick="alert('Phase 2 Locked! Ready for Phase 3: Episode Scene Breakdown.')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-semibold shadow-lg shadow-purple-500/20 active:scale-[0.98] transition">
+          🔒 Lock References & Proceed to Phase 3
+        </button>
+      `;
+
+      document.getElementById('storyConceptsView').classList.add('hidden');
+      document.getElementById('phase2View').classList.remove('hidden');
+    }
+
+    function backToDashboard() {
+      document.getElementById('storyConceptsView').classList.add('hidden');
+    }
+
+    function backToConcepts() {
+      document.getElementById('phase2View').classList.add('hidden');
+      document.getElementById('storyConceptsView').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
