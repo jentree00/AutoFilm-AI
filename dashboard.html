@@ -10,8 +10,8 @@
   <!-- Mobile Screen Container -->
   <div class="w-full max-w-[360px] h-[640px] relative overflow-hidden rounded-[24px] shadow-2xl flex flex-col justify-between p-4 bg-[#0B101D] text-white border border-slate-800">
     
-    <!-- Scrollable Content -->
-    <div class="flex-1 overflow-y-auto no-scrollbar space-y-4 pr-0.5">
+    <!-- Main Dashboard View -->
+    <div id="mainDashboard" class="flex-1 overflow-y-auto no-scrollbar space-y-4 pr-0.5">
       
       <!-- Header Section -->
       <div class="flex justify-between items-center pt-2 px-1">
@@ -39,7 +39,7 @@
         </div>
 
         <div class="relative z-10 px-3 pb-3">
-          <button id="btnCreateNew" onclick="openGenreModal()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-semibold tracking-wide shadow-md shadow-blue-500/20 active:scale-[0.99] transition">
+          <button onclick="openGenreModal()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-semibold tracking-wide shadow-md shadow-blue-500/20 active:scale-[0.99] transition">
             Create New Film
           </button>
         </div>
@@ -49,19 +49,19 @@
       <div>
         <h3 class="text-xs font-bold text-white mb-2.5 px-1">Quick Actions</h3>
         <div class="grid grid-cols-4 gap-2">
-          <button onclick="alert('Templates feature coming soon!')" class="flex flex-col items-center justify-center py-3 px-1 rounded-xl bg-[#131B2E] border border-slate-800/80 hover:bg-slate-800/50 transition">
+          <button class="flex flex-col items-center justify-center py-3 px-1 rounded-xl bg-[#131B2E] border border-slate-800/80 hover:bg-slate-800/50 transition">
             <svg class="w-5 h-5 text-blue-400 mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
             <span class="text-[10px] font-medium text-slate-300">Templates</span>
           </button>
-          <button onclick="alert('Navigating to Projects...')" class="flex flex-col items-center justify-center py-3 px-1 rounded-xl bg-[#131B2E] border border-slate-800/80 hover:bg-slate-800/50 transition">
+          <button class="flex flex-col items-center justify-center py-3 px-1 rounded-xl bg-[#131B2E] border border-slate-800/80 hover:bg-slate-800/50 transition">
             <svg class="w-5 h-5 text-blue-400 mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" /></svg>
             <span class="text-[10px] font-medium text-slate-300">My Projects</span>
           </button>
-          <button onclick="alert('Characters feature coming soon!')" class="flex flex-col items-center justify-center py-3 px-1 rounded-xl bg-[#131B2E] border border-slate-800/80 hover:bg-slate-800/50 transition">
+          <button class="flex flex-col items-center justify-center py-3 px-1 rounded-xl bg-[#131B2E] border border-slate-800/80 hover:bg-slate-800/50 transition">
             <svg class="w-5 h-5 text-blue-400 mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
             <span class="text-[10px] font-medium text-slate-300">Characters</span>
           </button>
-          <button onclick="alert('Settings feature coming soon!')" class="flex flex-col items-center justify-center py-3 px-1 rounded-xl bg-[#131B2E] border border-slate-800/80 hover:bg-slate-800/50 transition">
+          <button class="flex flex-col items-center justify-center py-3 px-1 rounded-xl bg-[#131B2E] border border-slate-800/80 hover:bg-slate-800/50 transition">
             <svg class="w-5 h-5 text-blue-400 mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /></svg>
             <span class="text-[10px] font-medium text-slate-300">Settings</span>
           </button>
@@ -99,7 +99,7 @@
         </div>
         
         <div class="space-y-2">
-          <button onclick="selectGenre('Horror / Thriller')" class="w-full py-2.5 px-3 rounded-xl bg-slate-900 border border-slate-700 hover:border-blue-500 text-left flex justify-between items-center">
+          <button onclick="runGenre('Horror')" class="w-full py-2.5 px-3 rounded-xl bg-slate-900 border border-slate-700 hover:border-blue-500 text-left flex justify-between items-center">
             <div>
               <p class="text-xs font-bold text-white">👻 Horror / Thriller</p>
               <p class="text-[10px] text-slate-400">Suspense, Action, Love Story, Mystery</p>
@@ -107,35 +107,51 @@
             <span class="text-blue-400 text-xs">➔</span>
           </button>
           
-          <button onclick="selectGenre('Sci-Fi / Cyberpunk')" class="w-full py-2.5 px-3 rounded-xl bg-slate-900 border border-slate-700 hover:border-blue-500 text-left flex justify-between items-center opacity-60">
+          <button onclick="runGenre('SciFi')" class="w-full py-2.5 px-3 rounded-xl bg-slate-900 border border-slate-700 hover:border-blue-500 text-left flex justify-between items-center opacity-70">
             <div>
-              <p class="text-xs font-bold text-white">🤖 Sci-Fi / Action</p>
-              <p class="text-[10px] text-slate-400">Futuristic, AI, Cyberpunk</p>
+              <p class="text-xs font-bold text-white">🤖 Sci-Fi / Cyberpunk</p>
+              <p class="text-[10px] text-slate-400">Futuristic, AI, Space</p>
             </div>
-            <span class="text-xs text-slate-500">Soon</span>
+            <span class="text-blue-400 text-xs">➔</span>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- MODAL 2: PROMPT DISPLAY & EXECUTION -->
-    <div id="promptModal" class="hidden absolute inset-0 bg-slate-950/95 backdrop-blur-md z-50 flex flex-col p-4">
-      <div class="flex justify-between items-center mb-2">
-        <h3 class="text-xs font-bold text-blue-400">Master Prompt Loaded</h3>
-        <button onclick="closePromptModal()" class="text-slate-400 text-xs hover:text-white">✕</button>
+    <!-- VIEW 2: AUTOMATIC STORY CONCEPTS DISPLAY -->
+    <div id="storyConceptsView" class="hidden absolute inset-0 bg-[#0B101D] z-50 flex flex-col p-4 overflow-y-auto no-scrollbar">
+      <div class="flex justify-between items-center mb-3">
+        <button onclick="backToDashboard()" class="text-xs text-blue-400 font-semibold">← Back</button>
+        <span class="text-[10px] bg-blue-900/50 text-blue-300 border border-blue-700/50 px-2 py-0.5 rounded-full font-mono">PHASE 1</span>
       </div>
 
-      <textarea id="promptBox" readonly class="w-full flex-1 bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-[10px] font-mono text-slate-300 resize-none focus:outline-none mb-3"></textarea>
+      <div class="bg-blue-950/30 border border-blue-800/40 rounded-xl p-3 mb-4">
+        <p class="text-[11px] text-blue-200 font-medium leading-relaxed">
+          🎬 <b>Welcome! Ako ang iyong Master AI Showrunner.</b> Pumili ng 1 sa 5 Story Concepts sa ibaba para masimulan ang Master Story Bible:
+        </p>
+      </div>
 
-      <button id="btnCopyPrompt" onclick="copyAndRunPrompt()" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-lg shadow-blue-500/20 active:scale-[0.98] transition">
-        📋 Copy Prompt & Start Generator
-      </button>
+      <!-- Story Concepts List -->
+      <div id="conceptsContainer" class="space-y-3 pb-6">
+        <!-- Dynamic content will load here -->
+      </div>
     </div>
 
   </div>
 
   <script>
-    const masterPromptText = `# 🎬 ULTIMATE FILIPINO HORROR THRILLER MASTER PROMPT\n### Viral Short-Form Filipino Series Edition\n### EXACTLY 5 EPISODES × EXACTLY 3 SCENES × 90 SECONDS PER EPISODE\n\n# 🎬 BEGIN\nStart with EXACTLY:\n\n"🎬 Welcome! Ako ang iyong Master AI Showrunner. Gumawa tayo ng isang viral Filipino cinematic horror-thriller series na may EXACTLY 5 EPISODES, 3 SCENES bawat episode, at 90 SECONDS bawat episode."\n\nThen immediately begin:\n\n# PHASE 1 — 5 VIRAL STORY CONCEPTS\nGenerate exactly 5 concepts.\n\nSTOP and wait for my choice.`;
+    const horrorConcepts = [
+      { id: 1, title: "Ang Huling Habilin", tag: "Psychological Horror", desc: "Nakatanggap si Mark ng video message mula sa namatay niyang girlfriend: 'Huwag mong bubuksan ang pinto kapag kumatok ako ngayong gabi.'" },
+      { id: 2, title: "Sumpa ng Balete Drive", tag: "Urban Legend Chase", desc: "Isinakay ni Leo si Maya sa kanyang kotse. Hindi ito nagpapakita sa mirror, at sinimulan silang habulin ng mga armadong kulto." },
+      { id: 3, title: "Kamera ng Kamatayan", tag: "Found Footage Thriller", desc: "Bawat kuhanang larawan ng lumang camera ay nagpapakita kung paano mamamatay ang tao sa loob ng 24 oras—at ang huling kuha ay sina Jay at Bea." },
+      { id: 4, title: "Mata ng San Vicente", tag: "Folk Horror", desc: "Umuwi si Paolo sa probinsya ng kasintahan. Natuklasan niyang ang buong barangay ay pinamumunuan ng mga aswang." },
+      { id: 5, title: "Gabi ng Manggagaway", tag: "Revenge Possesssion", desc: "Nagsimulang mag-iba ang kilos ni Kat matapos makakita ng kulam doll. May lumang espiritu na gustong ipaghanti ang isang lumang krimen." }
+    ];
+
+    const scifiConcepts = [
+      { id: 1, title: "Neon Manila 2099", tag: "Cyberpunk Action", desc: "Isang rogue cyborg ang naghahanap ng huling totoong alaala ng tao sa ilalim ng underground market." },
+      { id: 2, title: "Project Horizon", tag: "Space Survival", desc: "Nawalan ng contact ang space station sa Earth matapos makatanggap ng misteryosong signal mula sa Mars." }
+    ];
 
     function openGenreModal() {
       document.getElementById('genreModal').classList.remove('hidden');
@@ -145,22 +161,37 @@
       document.getElementById('genreModal').classList.add('hidden');
     }
 
-    function selectGenre(genre) {
+    function runGenre(genreType) {
       closeGenreModal();
-      document.getElementById('promptBox').value = masterPromptText;
-      document.getElementById('promptModal').classList.remove('hidden');
-    }
+      const container = document.getElementById('conceptsContainer');
+      container.innerHTML = '';
 
-    function closePromptModal() {
-      document.getElementById('promptModal').classList.add('hidden');
-    }
+      const list = genreType === 'Horror' ? horrorConcepts : scifiConcepts;
 
-    function copyAndRunPrompt() {
-      const promptBox = document.getElementById('promptBox');
-      navigator.clipboard.writeText(promptBox.value).then(() => {
-        alert("Nai-copy na ang Master Prompt! Maaari mo na itong i-paste sa AI chat.");
-        closePromptModal();
+      list.forEach(c => {
+        container.innerHTML += `
+          <div class="p-3 bg-[#131B2E] border border-slate-800 rounded-xl hover:border-blue-500/50 transition">
+            <div class="flex justify-between items-start mb-1">
+              <h4 class="text-xs font-bold text-white">${c.id}. ${c.title}</h4>
+              <span class="text-[9px] bg-slate-800 text-blue-400 px-1.5 py-0.5 rounded">${c.tag}</span>
+            </div>
+            <p class="text-[10px] text-slate-300 leading-snug mb-2.5">${c.desc}</p>
+            <button onclick="selectStory(${c.id}, '${c.title}')" class="w-full py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-[10px] font-semibold transition">
+              Piliin ang Concept #${c.id}
+            </button>
+          </div>
+        `;
       });
+
+      document.getElementById('storyConceptsView').classList.remove('hidden');
+    }
+
+    function selectStory(id, title) {
+      alert(`Na-select mo ang Concept #${id}: "${title}"!\n\nSusunod na ipoproseso ang Phase 2: Master Story Bible at Character Reference System.`);
+    }
+
+    function backToDashboard() {
+      document.getElementById('storyConceptsView').classList.add('hidden');
     }
   </script>
 </body>
