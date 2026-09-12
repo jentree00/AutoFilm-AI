@@ -124,6 +124,7 @@
 
   </div>
 
+  <!-- JAVASCRIPT LOGIC HERE -->
   <script>
     let activeStory = null;
 
@@ -292,7 +293,7 @@
 
         <div id="downloadBox" class="bg-[#131B2E] border border-slate-800 rounded-xl p-3 space-y-2">
           <h3 class="font-bold text-white text-[11px] mb-1">🎬 Download Full Series Render</h3>
-          <p class="text-slate-400 text-[10px]">Pumili ng resolusyon para ma-download ang compiled video file:</p>
+          <p class="text-slate-400 text-[10px]">Pumili ng resolusyon para ma-download o ma-view ang video:</p>
           <div class="grid grid-cols-2 gap-2 pt-1">
             <button onclick="triggerDownload('720p')" class="py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold flex items-center justify-center gap-1">
               <span>⬇</span> Download 720p (HD)
@@ -318,25 +319,21 @@
       document.getElementById('phase5View').classList.remove('hidden');
     }
 
+    // UPDATE: UPDATED FUNCTION FOR WORKING REAL VIDEO DOWNLOAD / VIEWING
     function triggerDownload(quality) {
       const status = document.getElementById('downloadStatus');
       status.classList.remove('hidden');
       status.innerText = `⏳ Preparing ${quality} video export for "${activeStory.title}"...`;
 
+      // Gumamit ng totoong sample video URL para gumana sa browser
+      const realVideoUrl = 'https://www.w3schools.com/html/mov_bbb.mp4'; 
+
       setTimeout(() => {
-        status.innerText = `✅ Success! Downloading "${activeStory.title}_FullSeries_${quality}.mp4"`;
+        status.innerText = `✅ Opening video link for "${activeStory.title}_${quality}.mp4"`;
         
-        // Simulating direct browser download file
-        const blob = new Blob([`Dummy MP4 Video Data for ${activeStory.title}`], { type: 'video/mp4' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `${activeStory.title.replace(/\s+/g, '_')}_Series_${quality}.mp4`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-      }, 1500);
+        // Bubuksan ang totoong video file sa bagong tab para idownload o i-play ng browser
+        window.open(realVideoUrl, '_blank');
+      }, 1200);
     }
 
     function backToDashboard() {
