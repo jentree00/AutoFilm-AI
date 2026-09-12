@@ -31,7 +31,8 @@ jobs:
       - name: Prepare Web Assets
         run: |
           mkdir -p www
-          cp *.html www/ 2>/dev/null || true
+          cp *.html www/ || true
+          ls -la www/
 
       - name: Add & Sync Android Platform
         run: |
